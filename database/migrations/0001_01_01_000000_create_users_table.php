@@ -14,9 +14,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('nickname')->unique();
             $table->string('email')->unique();
+            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->enum('type', ['standard', 'premium'])->default('standard');
+            $table->dateTime('subscribed_at')->nullable();
+            $table->integer('max_listings')->default(1);
+            $table->integer('boosts')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_active')->default(true);
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
