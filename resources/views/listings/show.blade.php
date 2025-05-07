@@ -56,9 +56,6 @@
     function boostListing() {
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                console.log(this.responseText);
-            }
             if (this.readyState === 4 && this.status === 202) {
                 window.location.reload();
             }

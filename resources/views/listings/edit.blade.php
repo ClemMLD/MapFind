@@ -189,8 +189,6 @@
                 }
             });
 
-            console.log('Response:', response);
-
             if (response.status === 202) {
                 window.location.href = '{{ route('listings.show', [$listing]) }}';
             } else if (response.status === 409) {

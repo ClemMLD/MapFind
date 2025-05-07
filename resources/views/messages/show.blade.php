@@ -53,9 +53,6 @@
             })
                 .then((response) => {
                     displayMessage(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
                 });
         }
 
