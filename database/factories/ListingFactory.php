@@ -20,13 +20,14 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->title(),
+            'title' => $this->faker->sentence,
             'description' => $this->faker->sentence(),
             'condition' => $this->faker->randomElement(['new', 'excellent', 'very good', 'good', 'acceptable', 'poor', 'for_parts']),
             'category_id' => Category::inRandomOrder()->first()->id,
             'price' => $this->faker->randomFloat(2, 0, 1000),
-            'latitude' => $this->faker->latitude(),
-            'longitude' => $this->faker->longitude(),
+            'currency' => $this->faker->randomElement(['USD', 'EUR']),
+            'latitude' => $this->faker->latitude(41.0, 51.0),
+            'longitude' => $this->faker->longitude(-5.0, 10.0),
             'address' => $this->faker->address(),
             'user_id' => User::inRandomOrder()->first()->id,
         ];

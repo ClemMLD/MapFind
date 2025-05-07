@@ -2,24 +2,36 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Category>
- */
 class CategoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $category = $this->faker->randomElement($this->getCategories());
+
         return [
-            'name' => $this->faker->unique()->word(),
-            'color' => $this->faker->hexColor(),
+            'name' => [
+                'en' => $category['en'],
+                'fr' => $category['fr'],
+            ],
+            'color' => $this->faker->hexColor,
+        ];
+    }
+
+    private function getCategories(): array
+    {
+        return [
+            ['en' => 'Restaurants', 'fr' => 'Restaurants'],
+            ['en' => 'Video games', 'fr' => 'Jeux vidéo'],
+            ['en' => 'Music', 'fr' => 'Musique'],
+            ['en' => 'Cinema', 'fr' => 'Cinéma'],
+            ['en' => 'Sport', 'fr' => 'Sport'],
+            ['en' => 'Computer science', 'fr' => 'Informatique'],
+            ['en' => 'Fashion', 'fr' => 'Mode'],
+            ['en' => 'Travel', 'fr' => 'Voyage'],
+            ['en' => 'Cooking', 'fr' => 'Cuisine'],
+            ['en' => 'Animals', 'fr' => 'Animaux'],
         ];
     }
 }

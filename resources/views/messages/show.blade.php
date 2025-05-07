@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight cursor-pointer"
+            onclick="window.location.href='{{ route('users.show', $user->id) }}'">
             {{ $user->name }}
         </h2>
     </x-slot>
@@ -13,25 +14,21 @@
         </div>
     @endif
 
-    @if($messages->isEmpty())
-        <p>No messages found.</p>
-    @else
-        <div class="m-12 bg-primary dark:bg-primary_dark rounded-lg h-4/5 p-12 flex flex-col space-y-4">
-            <ul class="list-group space-y-4" style="max-height: 400px; overflow-y: auto;">
-                @foreach($messages as $message)
-                    <li class="list-group-item rounded-lg p-4 bg-secondary dark:bg-secondary_dark w-4/12 {{ $message->sender_id != auth()->user()->id ? 'mr-auto' : 'ml-auto' }}">
-                        <p class="font-bold text-white"> {{ $message->content }} </p>
-                    </li>
-                @endforeach
-            </ul>
-            <div class="flex flex-col space-y-4">
-                <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-                <x-text-area name="content"/>
-                <x-button type="submit" onclick="sendMessage()" class="bg-blue-700 text-white rounded-lg p-4 mt-4">Send
-                </x-button>
-            </div>
+    <div class="m-4 bg-primary dark:bg-primary_dark rounded-2xl p-12 flex flex-col space-y-4 flex-grow justify-between">
+        <ul class="list-group space-y-4" style="max-height: 400px; overflow-y: auto;">
+            @foreach($messages as $message)
+                <li class="list-group-item rounded-lg p-4 bg-secondary dark:bg-secondary_dark w-4/12 {{ $message->sender_id != auth()->user()->id ? 'mr-auto' : 'ml-auto' }}">
+                    <p class="font-bold text-white"> {{ $message->content }} </p>
+                </li>
+            @endforeach
+        </ul>
+        <div class="flex flex-col space-y-4">
+            <input type="hidden" name="receiver_id" value="{{ $user->id }}">
+            <x-text-area name="content"/>
+            <x-button type="submit" onclick="sendMessage()" class="bg-blue-700 text-white rounded-lg p-4 mt-4">Send
+            </x-button>
         </div>
-    @endif
+    </div>
 
     <script>
         const messageList = document.querySelector('.list-group');
@@ -56,9 +53,6 @@
             })
                 .then((response) => {
                     displayMessage(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
                 });
         }
 
