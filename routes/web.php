@@ -1,21 +1,30 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlockedUserController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+require __DIR__ . '/auth.php';
+
+Route::get('/', [WelcomeController::class, 'show'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::resource('listings', ListingController::class);
+    Route::group(['listing'], function () {
+        Route::post('/boost', [ListingController::class, 'boost'])->name('listings.boost');
+    });
     Route::resource('messages', MessageController::class);
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('categories', CategoryController::class)->only(['index']);
+    Route::resource('users', UserController::class)->only(['show']);
+    Route::resource('blocked-users', BlockedUserController::class);
+    Route::resource('account', AccountController::class);
+    Route::group(['account'], function () {
+        Route::match(['POST', 'DELETE'], '/avatar', [AccountController::class, 'avatar'])->name('account.avatar');
+        Route::get('/upgrade', [AccountController::class, 'upgrade'])->name('account.upgrade');
+    });
 });
-
-require __DIR__.'/auth.php';

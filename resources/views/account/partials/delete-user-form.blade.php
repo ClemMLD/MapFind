@@ -16,7 +16,7 @@
     >{{ __('Delete Account') }}</x-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+        <form method="post" action="{{ route('account.destroy', auth()->user()) }}" class="p-6">
             @csrf
             @method('delete')
 
@@ -29,7 +29,7 @@
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-input-label for="password" :value="__('Password')" />
 
                 <x-text-input
                     id="password"
@@ -42,12 +42,12 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <div>
-                <x-button x-on:click="$dispatch('close')">
+            <div class="mt-4 flex flex-row space-x-2">
+                <x-button type="button" x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
                 </x-button>
 
-                <x-button>
+                <x-button danger>
                     {{ __('Delete Account') }}
                 </x-button>
             </div>

@@ -12,15 +12,20 @@
     @endif
 
     @if($messages->isEmpty())
-        <p>No messages found.</p>
+        <div class="text-white flex items-center justify-center h-screen">
+            <p class="bg-primary dark:bg-primary_dark rounded-lg p-4">
+                No messages found.
+            </p>
+        </div>
     @else
         <ul class="list-group m-12 space-y-4">
             @foreach($messages as $message)
-                <a href="{{ route('messages.show', [$message->user->id]) }}" class="block hover:opacity-80 transition">
-                    <li class="list-group-item bg-primary dark:bg-primary_dark rounded-lg p-4">
-                        <p class="font-bold text-black dark:text-white">{{ $message->user->name }} </p>
+                <a href="{{ route('messages.show', [$message->user->id]) }}" class="block transition">
+                    <li class="list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary dark:hover:bg-secondary_dark shadow transition rounded-lg p-4">
+                        <p class="font-bold text-white">{{ $message->user->name }} </p>
                         <br>
-                        <p class="text-black dark:text-white">{{ __('messages.last_message') }}: {{ $message->content }}</p>
+                        <p class="text-white">{{ __('messages.last_message') }}
+                            : {{ $message->content }}</p>
                     </li>
                 </a>
             @endforeach
@@ -49,7 +54,7 @@
                     messageContainer.prepend(existingMessage);
                 } else {
                     const newMessage = document.createElement('div');
-                    newMessage.classList.add('dark:bg-dark', 'hover:opacity-60', 'rounded-lg', 'p-4', 'shadow-md', 'bg-white', 'w-full');
+                    newMessage.classList.add('list-group-item', 'bg-primary', 'dark:bg-primary_dark', 'hover:bg-secondary', 'dark:hover:bg-secondary_dark', 'shadow', 'transition', 'rounded-lg', 'p-4');
                     newMessage.style.cursor = 'pointer';
                     newMessage.setAttribute('id', `user-${userIdToCheck}`);
                     newMessage.onclick = () => window.location.href = messageShowRoute.replace(':id', userIdToCheck);

@@ -11,6 +11,10 @@ class Category extends Model
     use HasFactory;
     protected $guarded = [];
 
+    protected $casts = [
+        'name' => 'array',
+    ];
+
     public function listings(): HasMany
     {
         return $this->hasMany(Listing::class);
