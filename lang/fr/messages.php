@@ -8,6 +8,7 @@ return [
     'listings' => 'Annonces',
     'messages' => 'Messages',
     'account' => 'Compte',
+    'my_listings' => 'Mes annonces',
     'user' => 'Utilisateur',
     'last_message' => 'Dernier message',
     'premium_user' => 'Utilisateur premium',

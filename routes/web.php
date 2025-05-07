@@ -22,9 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class)->only(['index']);
     Route::resource('users', UserController::class)->only(['show']);
     Route::resource('blocked-users', BlockedUserController::class);
-    Route::resource('account', AccountController::class);
-    Route::group(['account'], function () {
+    Route::prefix('account')->group(function () {
         Route::match(['POST', 'DELETE'], '/avatar', [AccountController::class, 'avatar'])->name('account.avatar');
+        Route::get('/listings', [AccountController::class, 'listings'])->name('account.listings');
         Route::get('/upgrade', [AccountController::class, 'upgrade'])->name('account.upgrade');
     });
+    Route::resource('account', AccountController::class);
 });

@@ -8,6 +8,7 @@ return [
     'listings' => 'Listings',
     'messages' => 'Messages',
     'account' => 'Account',
+    'my_listings' => 'My listings',
     'user' => 'User',
     'last_message' => 'Last message',
     'premium_user' => 'Premium user',

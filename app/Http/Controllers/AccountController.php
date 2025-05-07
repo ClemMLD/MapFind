@@ -75,6 +75,13 @@ class AccountController extends Controller
         return Redirect::to('/');
     }
 
+    public function listings(): View
+    {
+        return view('account.listings', [
+            'listings' => auth()->user()->listings()->get(),
+        ]);
+    }
+
     public function upgrade(): View
     {
         return view('account.upgrade');

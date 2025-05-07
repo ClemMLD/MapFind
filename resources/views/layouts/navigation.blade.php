@@ -50,6 +50,10 @@
                                 {{ __('messages.account') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('account.listings')">
+                                {{ __('messages.my_listings') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -117,6 +121,10 @@
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('account.index')">
                         {{ __('messages.account') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('account.listings')">
+                        {{ __('messages.my_listings') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
