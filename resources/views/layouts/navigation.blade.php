@@ -1,4 +1,5 @@
-<nav x-data="{ open: false }" class="bg-primary dark:bg-primary_dark border-b border-tertiary dark:border-tertiary_dark">
+<nav x-data="{ open: false }"
+     class="bg-primary dark:bg-primary_dark border-b border-tertiary dark:border-tertiary_dark">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,7 +8,7 @@
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
                         <a href="{{ route('listings.index') }}">
-                            <x-application-logo class="!text-2xl" :iconSize="10" />
+                            <x-application-logo class="!text-2xl" :iconSize="10"/>
                         </a>
                     </div>
 
@@ -57,6 +58,12 @@
                             <x-dropdown-link class="rounded-xl" :href="route('favorites.index')">
                                 {{ __('messages.my_favorites') }}
                             </x-dropdown-link>
+
+                            @if (auth()->user()->role == 'admin')
+                                <x-dropdown-link class="rounded-xl" :href="route('filament.admin.pages.dashboard')">
+                                    {{ __('messages.admin_interface') }}
+                                </x-dropdown-link>
+                            @endif
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -134,6 +141,12 @@
                     <x-responsive-nav-link :href="route('account.listings')">
                         {{ __('messages.my_favorites') }}
                     </x-responsive-nav-link>
+
+                    @if (auth()->user()->role == 'admin')
+                        <x-responsive-nav-link :href="route('filament.admin.pages.dashboard')">
+                            {{ __('messages.admin_interface') }}
+                        </x-responsive-nav-link>
+                    @endif
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
