@@ -14,7 +14,7 @@
     @else
         <ul class="list-group m-12 space-y-4">
             @foreach ($listings as $listing)
-                <div class="flex flex-row justify-between items-center list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary dark:hover:bg-secondary_dark shadow transition rounded-2xl p-4 space-x-4">
+                <div class="flex flex-col md:flex-row justify-between items-center list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary dark:hover:bg-secondary_dark shadow transition rounded-2xl p-4 md:space-x-4">
                     <a href="{{ route('listings.show', [$listing]) }}" class="flex flex-row items-center space-x-4">
                         @if ($listing->images->isEmpty())
                             <x-heroicon-s-photo id="listing-image" class="w-10 h-10 text-white"/>
@@ -25,7 +25,7 @@
                         @endif
                         <p class="font-bold text-white">{{ Str::limit($listing->title, 20) }} </p>
                     </a>
-                    <div class="flex flex-row items-center space-x-4">
+                    <div class="flex flex-row items-center justify-center content-center align-middle space-x-1 md:space-x-2">
                         @if (!$listing->boosted)
                             <x-floating-button
                                     icon="star"

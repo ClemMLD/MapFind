@@ -47,6 +47,17 @@
                           icon="chat-bubble-oval-left">
                     {{ __('messages.contact') }}
                 </x-button>
+                @if ($isFavorite)
+                    <x-button onclick="removeFavorite()"
+                              icon="heart">
+                        {{ __('messages.remove_from_favorites') }}
+                    </x-button>
+                @else
+                    <x-button onclick="addFavorite()"
+                              icon="heart">
+                        {{ __('messages.add_to_favorites') }}
+                    </x-button>
+                @endif
             @endif
         </div>
     </div>
@@ -79,6 +90,34 @@
         xhttp.setRequestHeader('Accept', 'application/json');
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
-        // xhttp.send();
+        xhttp.send();
+    }
+
+    function addFavorite() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 201) {
+                window.location.reload();
+            }
+        };
+        xhttp.open('POST', "{{ route('favorites.store', ['listing_id' => $listing->id]) }}");
+        xhttp.setRequestHeader('Accept', 'application/json');
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+        xhttp.send();
+    }
+
+    function removeFavorite() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 204) {
+                window.location.reload();
+            }
+        };
+        xhttp.open('DELETE', "{{ route('favorites.destroy', [$listing]) }}");
+        xhttp.setRequestHeader('Accept', 'application/json');
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+        xhttp.send();
     }
 </script>

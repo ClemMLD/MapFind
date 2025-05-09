@@ -10,11 +10,11 @@
 
     @if (count($listing->images) > 1)
         <button id="prev"
-                class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-secondary dark:bg-secondary_dark text-white p-2 rounded-full">
+                class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-secondary dark:bg-secondary_dark hover:bg-tertiary hover:dark:bg-tertiary_dark transition text-white p-2 rounded-full">
             <x-heroicon-s-chevron-left class="w-4 h-4 text-white"/>
         </button>
         <button id="next"
-                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-secondary dark:bg-secondary_dark text-white p-2 rounded-full">
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-secondary dark:bg-secondary_dark hover:bg-tertiary hover:dark:bg-tertiary_dark transition text-white p-2 rounded-full">
             <x-heroicon-s-chevron-right class="w-4 h-4 text-white"/>
         </button>
     @endif

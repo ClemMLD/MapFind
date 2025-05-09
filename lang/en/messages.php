@@ -9,6 +9,7 @@ return [
     'messages' => 'Messages',
     'account' => 'Account',
     'my_listings' => 'My listings',
+    'my_favorites' => 'My favorites',
     'user' => 'User',
     'last_message' => 'Last message',
     'premium_user' => 'Premium user',
@@ -43,4 +44,7 @@ return [
     'no_messages' => 'There are no messages',
     'no_listings' => 'There are no listings',
     'no_blocked_users' => 'There are no blocked users',
+    'no_favorites' => 'There are no favorites',
+    'add_to_favorites' => 'Add to favorites',
+    'remove_from_favorites' => 'Remove from favorites',
 ];

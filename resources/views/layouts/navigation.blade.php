@@ -54,6 +54,10 @@
                                 {{ __('messages.my_listings') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link class="rounded-xl" :href="route('favorites.index')">
+                                {{ __('messages.my_favorites') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -125,6 +129,10 @@
 
                     <x-responsive-nav-link :href="route('account.listings')">
                         {{ __('messages.my_listings') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('account.listings')">
+                        {{ __('messages.my_favorites') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
