@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\ActiveMiddleware;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\AccountController;
@@ -18,7 +19,7 @@ Route::prefix('subscription-webhooks')->group(function () {
     Route::post('/stripe', [SubscriptionWebhookController::class, 'stripe']);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', ActiveMiddleware::class])->group(function () {
     Route::resource('listings', ListingController::class);
     Route::prefix('listings')->group(function () {
         Route::post('/boost', [ListingController::class, 'boost'])->name('listings.boost');

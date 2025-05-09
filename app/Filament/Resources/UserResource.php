@@ -45,7 +45,7 @@ class UserResource extends Resource
                         'partner' => 'Partner',
                     ]),
                 Forms\Components\DateTimePicker::make('subscribed_at'),
-                Forms\Components\TextInput::make('max_events')
+                Forms\Components\TextInput::make('max_listings')
                     ->numeric()
                     ->required()
                     ->step(1),
@@ -75,7 +75,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('role')->searchable(),
                 Tables\Columns\TextColumn::make('type')->searchable(),
-                Tables\Columns\TextColumn::make('max_events'),
+                Tables\Columns\TextColumn::make('max_listings'),
                 Tables\Columns\TextColumn::make('password'),
                 Tables\Columns\CheckboxColumn::make('is_active'),
             ]);
