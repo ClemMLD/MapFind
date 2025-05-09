@@ -14,19 +14,19 @@
     @if($messages->isEmpty())
         <div class="text-white flex items-center justify-center h-screen">
             <p class="bg-primary dark:bg-primary_dark rounded-lg p-4">
-                No messages found.
+                {{ __('messages.no_messages') }}
             </p>
         </div>
     @else
         <ul class="list-group m-12 space-y-4">
             @foreach($messages as $message)
                 <a href="{{ route('messages.show', [$message->user->id]) }}" class="block transition">
-                    <li class="list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary dark:hover:bg-secondary_dark shadow transition rounded-lg p-4">
+                    <div class="list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary dark:hover:bg-secondary_dark shadow transition rounded-lg p-4">
                         <p class="font-bold text-white">{{ $message->user->name }} </p>
                         <br>
                         <p class="text-white">{{ __('messages.last_message') }}
                             : {{ $message->content }}</p>
-                    </li>
+                    </div>
                 </a>
             @endforeach
         </ul>

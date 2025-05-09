@@ -15,7 +15,7 @@ Route::get('/', [WelcomeController::class, 'show'])->name('welcome');
 
 Route::middleware('auth')->group(function () {
     Route::resource('listings', ListingController::class);
-    Route::group(['listing'], function () {
+    Route::prefix('listings')->group(function () {
         Route::post('/boost', [ListingController::class, 'boost'])->name('listings.boost');
     });
     Route::resource('messages', MessageController::class);

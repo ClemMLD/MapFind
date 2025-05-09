@@ -39,4 +39,8 @@ return [
     'add_image' => 'Add image',
     'create' => 'Create',
     'update' => 'Update',
+    'max_listings_limit' => 'You cannot create more listings',
+    'no_messages' => 'There are no messages',
+    'no_listings' => 'There are no listings',
+    'no_blocked_users' => 'There are no blocked users',
 ];
