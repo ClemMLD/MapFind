@@ -74,10 +74,11 @@
                 window.location.href = '{{ route('listings.index') }}';
             }
         };
+        console.log("{{ route('listings.destroy', [$listing]) }}");
         xhttp.open('DELETE', "{{ route('listings.destroy', [$listing]) }}");
         xhttp.setRequestHeader('Accept', 'application/json');
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
-        xhttp.send();
+        // xhttp.send();
     }
 </script>

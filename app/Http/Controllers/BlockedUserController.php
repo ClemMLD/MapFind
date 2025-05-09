@@ -12,20 +12,9 @@ class BlockedUserController extends Controller
 {
     public function index(): JsonResponse|View
     {
-        if (request()->wantsJson()) {
-            $blockedUsers = BlockedUser::where('user_id', auth()->user()->id)->get();
-            $users = [];
-            foreach ($blockedUsers as $blockedUser) {
-                $users[] = User::where('id', $blockedUser->blocked_user_id)->first();
-            }
-            return response()->json($users);
-        } else {
-            $users = auth()->user()->blockedUsers->pluck('blockedUser')->map(function ($user) {
-                return $user->only(['id', 'name', 'nickname']);
-            });
+        $users = auth()->user()->blockedUsers->pluck('blockedUser');
 
-            return view('blocked-users.index', ['users' => $users]);
-        }
+        return view('blocked-users.index', ['users' => $users]);
     }
 
     public function store(Request $request): JsonResponse

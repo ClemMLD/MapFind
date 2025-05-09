@@ -39,4 +39,8 @@ return [
     'add_image' => 'Ajouter une image',
     'create' => 'Créer',
     'update' => 'Mettre à jour',
+    'max_listings_limit' => 'Vous ne pouvez pas créer plus d\'annonces',
+    'no_messages' => 'Aucune message',
+    'no_listings' => 'Aucune annonce',
+    'no_blocked_users' => 'Aucun utilisateur bloqué',
 ];

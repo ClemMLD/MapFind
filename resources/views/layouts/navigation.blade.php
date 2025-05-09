@@ -31,7 +31,7 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-secondary dark:bg-secondary_dark hover:bg-tertiary dark:hover:bg-tertiary_dark focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-xl text-white bg-secondary dark:bg-secondary_dark hover:bg-tertiary dark:hover:bg-tertiary_dark focus:outline-none transition ease-in-out duration-150">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ms-1">
@@ -46,11 +46,11 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('account.index')">
+                            <x-dropdown-link class="rounded-xl" :href="route('account.index')">
                                 {{ __('messages.account') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('account.listings')">
+                            <x-dropdown-link class="rounded-xl" :href="route('account.listings')">
                                 {{ __('messages.my_listings') }}
                             </x-dropdown-link>
 
@@ -58,7 +58,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <x-dropdown-link :href="route('logout')"
+                                <x-dropdown-link class="rounded-xl" :href="route('logout')"
                                                  onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     {{ __('Log Out') }}
@@ -86,7 +86,7 @@
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-secondary dark:hover:bg-secondary_dark focus:outline-none transition duration-150 ease-in-out">
+                        class="inline-flex items-center justify-center p-2 rounded-xl text-white hover:bg-secondary dark:hover:bg-secondary_dark focus:outline-none transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
                               stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,7 +105,7 @@
             <x-responsive-nav-link :href="route('listings.index')" :active="request()->routeIs('dashboard')">
                 {{ __('messages.listings') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('listings.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('messages.index')" :active="request()->routeIs('dashboard')">
                 {{ __('messages.messages') }}
             </x-responsive-nav-link>
         </div>

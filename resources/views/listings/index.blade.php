@@ -2,9 +2,9 @@
     <div id="map" class="w-full h-[calc(100vh-66px)] z-0"></div>
 
     @if (in_array(auth()->user()->type, ['premium', 'partner']))
-        <div id="categoryBox" class="fixed top-20 left-1/2 transform -translate-x-1/2 space-y-4">
+        <div id="categoryBox" class="flex flex-col items-center fixed mt-5 left-1/2 transform -translate-x-1/2 space-y-4">
             <button id="dropdownCheckboxButton"
-                    class="flex flex-row w-full p-2 bg-yellow-500 hover:bg-yellow-600 transition text-white font-medium rounded-xl px-5 py-2.5 items-center"
+                    class="flex flex-row p-2 bg-yellow-500 hover:bg-yellow-600 transition text-white font-medium rounded-xl px-5 py-2.5 items-center"
                     type="button">
                 {{ __('messages.categories') }}
                 <x-heroicon-o-chevron-down class="w-4 h-4 ml-2"/>
