@@ -65,7 +65,7 @@
                                 <x-dropdown-link class="rounded-xl" :href="route('logout')"
                                                  onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('messages.logout') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>

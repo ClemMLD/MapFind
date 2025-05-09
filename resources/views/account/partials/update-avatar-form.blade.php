@@ -17,10 +17,10 @@
             <x-heroicon-o-user-circle id="user-avatar" class="text-white"/>
         @endif
 
-        <x-floating-button class="absolute top-0 left-0" icon="pencil" onclick="document.getElementById('upload-avatar').click()"></x-floating-button>
+        <x-floating-button class="absolute top-5 left-5" icon="pencil" onclick="document.getElementById('upload-avatar').click()"></x-floating-button>
         <input id="upload-avatar" type="file" class="hidden" onchange="uploadAvatar(event)">
 
-        <x-floating-button class="absolute top-0 right-0" icon="trash" onclick="deleteAvatar()"></x-floating-button>
+        <x-floating-button class="absolute top-5 right-5" icon="trash" onclick="deleteAvatar()"></x-floating-button>
     </div>
 </section>
 

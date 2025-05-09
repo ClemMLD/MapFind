@@ -20,7 +20,7 @@
             <div class="flex flex-col">
                 @if (auth()->user()->type === 'standard')
                     <x-button onclick="window.location.href = '{{ route('account.upgrade') }}'"
-                              class="!bg-yellow-400 hover:!bg-yellow-500"
+                              class="!bg-yellow-500 hover:!bg-yellow-600"
                               icon="arrow-up">
                         {{ __('messages.upgrade') }}
                     </x-button>
