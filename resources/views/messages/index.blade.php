@@ -13,7 +13,7 @@
 
     @if($messages->isEmpty())
         <div class="text-white flex items-center justify-center h-screen">
-            <p class="bg-primary dark:bg-primary_dark rounded-lg p-4">
+            <p class="bg-primary dark:bg-primary_dark rounded-2xl p-4">
                 {{ __('messages.no_messages') }}
             </p>
         </div>

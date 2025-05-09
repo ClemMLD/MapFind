@@ -6,17 +6,26 @@
     </x-slot>
     @if (isset($users) && count($users) == 0)
         <div class="text-white flex items-center justify-center h-screen">
-            <p class="bg-primary dark:bg-primary_dark rounded-lg p-4">
+            <p class="bg-primary dark:bg-primary_dark rounded-2xl p-4">
                 {{ __('messages.no_blocked_users') }}
             </p>
         </div>
     @else
         <ul class="list-group m-12 space-y-4">
             @foreach ($users as $user)
-                <div class="flex flex-row items-center justify-between list-group-item bg-primary dark:bg-primary_dark shadow rounded-2xl p-4">
-                    <p class="font-bold text-white">{{ $user->name }} </p>
-                    <br>
-                    <x-button icon="no-symbol" onclick="unblockUser({{$user->id}})" danger>{{ __('messages.unblock') }}</x-button>
+                <div class="flex flex-row items-center justify-between list-group-item bg-primary dark:bg-primary_dark hover:bg-secondary hover:dark:bg-secondary_dark transition shadow rounded-2xl p-4">
+                    <a href="{{ route('users.show', [$user]) }}" class="flex flex-row items-center space-x-4">
+                        @if ($user->image)
+                            <img src="{{ config('app.url') . '/storage/' . $user->image }}"
+                                 alt="{{ __( 'messages.user_image' ) }}"
+                                 class="object-cover w-10 h-10 rounded-full">
+                        @else
+                            <x-heroicon-s-user-circle class="w-10 h-10 text-white"/>
+                        @endif
+                        <p class="font-bold text-white">{{ $user->name }} </p>
+                    </a>
+                    <x-button icon="no-symbol" onclick="unblockUser({{$user->id}})"
+                              danger>{{ __('messages.unblock') }}</x-button>
                 </div>
             @endforeach
         </ul>
