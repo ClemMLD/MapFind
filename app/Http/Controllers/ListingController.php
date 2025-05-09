@@ -20,7 +20,11 @@ class ListingController extends Controller
 
     public function show(Listing $listing): JsonResponse|View
     {
-        return view('listings.show', ['listing' => $listing->load(['category', 'user', 'images'])]);
+        $isFavorite = auth()->user()->favorites()->where('listing_id', $listing->id)->exists();
+        return view('listings.show', [
+            'listing' => $listing->load(['category', 'user', 'images']),
+            'isFavorite' => $isFavorite,
+        ]);
     }
 
     public function index(ListingIndexRequest $request): JsonResponse|View

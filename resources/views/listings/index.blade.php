@@ -12,18 +12,18 @@
 
             <div id="dropdownDefaultCheckbox"
                  class="z-10 hidden w-full bg-yellow-500 backdrop-blur-md divide-y rounded-xl shadow-sm overflow-y-auto h-[calc(100vh-400px)]">
-                <ul id="categorySelect" class="p-3 space-y-3 text-sm"
+                <ul id="categorySelect" class="p-3 space-y-3"
                     aria-labelledby="dropdownCheckboxButton">
                 </ul>
             </div>
         </div>
     @endif
 
-    <x-floating-button id="recenterButton" class="bottom-0 fixed right-0" icon="map-pin"
+    <x-floating-button id="recenterButton" class="bottom-0 fixed right-0 m-4" icon="map-pin"
                        alt="{{ __('messages.recenter') }}"></x-floating-button>
-    <x-floating-button id="cancelButton" class="bottom-20 hidden fixed right-0" icon="trash"
+    <x-floating-button id="cancelButton" class="bottom-16 hidden fixed right-0 m-4" icon="trash"
                        alt="{{ __('messages.delete') }}"></x-floating-button>
-    <x-floating-button id="createListingButton" class="bottom-40 hidden fixed right-0" icon="plus-circle"
+    <x-floating-button id="createListingButton" class="bottom-32 hidden fixed right-0 m-4" icon="plus-circle"
                        alt="{{ __('messages.create') }}"></x-floating-button>
 
     <x-button id="searchZoneButton" class="fixed bottom-10 left-1/2 transform -translate-x-1/2">

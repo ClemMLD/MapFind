@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BlockedUser::class);
     }
+
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }

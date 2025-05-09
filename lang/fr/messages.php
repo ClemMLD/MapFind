@@ -9,6 +9,7 @@ return [
     'messages' => 'Messages',
     'account' => 'Compte',
     'my_listings' => 'Mes annonces',
+    'my_favorites' => 'Mes favoris',
     'user' => 'Utilisateur',
     'last_message' => 'Dernier message',
     'premium_user' => 'Utilisateur premium',
@@ -43,4 +44,7 @@ return [
     'no_messages' => 'Aucune message',
     'no_listings' => 'Aucune annonce',
     'no_blocked_users' => 'Aucun utilisateur bloqué',
+    'no_favorites' => 'Aucun favori',
+    'add_to_favorites' => 'Ajouter aux favoris',
+    'remove_from_favorites' => 'Retirer des favoris',
 ];
