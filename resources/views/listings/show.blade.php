@@ -29,7 +29,7 @@
             @if ($listing->user->id === auth()->user()->id)
                 @if (!$listing->boosted && auth()->user()->boosts > 0)
                     <x-button onclick="boostListing()"
-                              icon="star" class="!bg-yellow-400 hover:!bg-yellow-500">
+                              icon="star" class="!bg-yellow-500 hover:!bg-yellow-600">
                         {{ __('messages.boost') }}
                     </x-button>
                 @endif
