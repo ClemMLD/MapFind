@@ -9,10 +9,14 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\BlockedUserController;
+use App\Http\Controllers\SubscriptionWebhookController;
 
 require __DIR__ . '/auth.php';
 
 Route::get('/', [WelcomeController::class, 'show'])->name('welcome');
+Route::prefix('subscription-webhooks')->group(function () {
+    Route::post('/stripe', [SubscriptionWebhookController::class, 'stripe']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::resource('listings', ListingController::class);
@@ -27,6 +31,7 @@ Route::middleware('auth')->group(function () {
         Route::match(['POST', 'DELETE'], '/avatar', [AccountController::class, 'avatar'])->name('account.avatar');
         Route::get('/listings', [AccountController::class, 'listings'])->name('account.listings');
         Route::get('/upgrade', [AccountController::class, 'upgrade'])->name('account.upgrade');
+        Route::get('/subscription-page', [AccountController::class, 'subscriptionPage'])->name('account.subscription-page');
     });
     Route::resource('favorites', FavoriteController::class);
     Route::resource('account', AccountController::class);

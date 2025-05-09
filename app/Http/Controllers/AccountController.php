@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Stripe\StripeClient;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\AccountUpdateRequest;
@@ -83,5 +85,32 @@ class AccountController extends Controller
     public function upgrade(): View
     {
         return view('account.upgrade');
+    }
+
+    public function subscriptionPage(): RedirectResponse
+    {
+        $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+
+        $session = $stripe->checkout->sessions->create([
+            'payment_method_types' => ['card'],
+            'mode' => 'subscription',
+            'line_items' => [[
+                'price' => env('STRIPE_PRICE_ID'),
+                'quantity' => 1,
+            ]],
+            'metadata' => [
+                'user_id' => auth()->id(),
+            ],
+            'subscription_data' => [
+                'metadata' => [
+                    'user_id' => auth()->id(),
+                    'secret' => Hash::make(env('STRIPE_WEBHOOK_SECRET')),
+                ],
+            ],
+            'success_url' => route('account.index') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('account.index'),
+        ]);
+
+        return redirect($session->url);
     }
 }

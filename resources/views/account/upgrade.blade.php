@@ -15,10 +15,10 @@
                 <li>{{ __('messages.filter_advantage') }}</li>
             </ul>
             <x-button class="!bg-yellow-500 hover:!bg-yellow-600"
-                      icon="arrow-up">
+                      icon="arrow-up"
+                      onclick="window.location.href = '{{ route('account.subscription-page') }}'">
                 {{ __('messages.upgrade') }}
             </x-button>
         </div>
-    </div>
     </div>
 </x-app-layout>
