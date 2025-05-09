@@ -10,6 +10,7 @@ return [
     'account' => 'Compte',
     'my_listings' => 'Mes annonces',
     'my_favorites' => 'Mes favoris',
+    'admin_interface' => 'Interface admin',
     'user' => 'Utilisateur',
     'last_message' => 'Dernier message',
     'premium_user' => 'Utilisateur premium',
@@ -53,4 +54,5 @@ return [
     'no_favorites' => 'Aucun favori',
     'add_to_favorites' => 'Ajouter aux favoris',
     'remove_from_favorites' => 'Retirer des favoris',
+    'back' => 'Retour',
 ];

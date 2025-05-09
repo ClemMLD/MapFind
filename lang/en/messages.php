@@ -10,6 +10,7 @@ return [
     'account' => 'Account',
     'my_listings' => 'My listings',
     'my_favorites' => 'My favorites',
+    'admin_interface' => 'Admin interface',
     'user' => 'User',
     'last_message' => 'Last message',
     'premium_user' => 'Premium user',
@@ -53,4 +54,5 @@ return [
     'no_favorites' => 'There are no favorites',
     'add_to_favorites' => 'Add to favorites',
     'remove_from_favorites' => 'Remove from favorites',
+    'back' => 'Back',
 ];
