@@ -17,16 +17,15 @@
     <div class="m-4 bg-primary dark:bg-primary_dark rounded-2xl p-12 flex flex-col space-y-4 flex-grow justify-between">
         <ul class="list-group space-y-4" style="max-height: 400px; overflow-y: auto;">
             @foreach($messages as $message)
-                <li class="list-group-item rounded-lg p-4 bg-secondary dark:bg-secondary_dark w-4/12 {{ $message->sender_id != auth()->user()->id ? 'mr-auto' : 'ml-auto' }}">
+                <li class="list-group-item rounded-2xl p-4 bg-secondary dark:bg-secondary_dark w-4/12 {{ $message->sender_id != auth()->user()->id ? 'mr-auto' : 'ml-auto' }}">
                     <p class="font-bold text-white"> {{ $message->content }} </p>
                 </li>
             @endforeach
         </ul>
-        <div class="flex flex-col space-y-4">
+        <div class="flex flex-row space-x-4">
             <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-            <x-text-area name="content"/>
-            <x-button type="submit" onclick="sendMessage()" class="bg-blue-700 text-white rounded-lg p-4 mt-4">Send
-            </x-button>
+            <x-text-area name="content" class="w-full"/>
+            <x-floating-button icon="paper-airplane" type="submit" onclick="sendMessage()">Send</x-floating-button>
         </div>
     </div>
 
@@ -58,7 +57,7 @@
 
         function displayMessage(response) {
             const messageItem = document.createElement('li');
-            messageItem.classList.add('list-group-item', 'rounded-lg', 'p-4', 'bg-blue-700', 'w-4/12');
+            messageItem.classList.add('list-group-item', 'rounded-2xl', 'p-4', 'bg-secondary', 'dark:bg-secondary_dark', 'w-4/12');
             messageItem.classList.add(response.sender_id != {{ auth()->id() }} ? 'mr-auto' : 'ml-auto');
             messageItem.innerHTML = `<p class="font-bold text-white">${response.content}</p>`;
             messageList.appendChild(messageItem);

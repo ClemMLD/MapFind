@@ -33,7 +33,13 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-xl text-white bg-secondary dark:bg-secondary_dark hover:bg-tertiary dark:hover:bg-tertiary_dark focus:outline-none transition ease-in-out duration-150">
-                                <div>{{ Auth::user()->name }}</div>
+                                @if (auth()->user()->image)
+                                    <img src="{{ config('app.url') . '/storage/' . auth()->user()->image }}" alt="{{ __('messages.avatar') }}"
+                                         class="object-cover w-6 h-6 rounded-full">
+                                @else
+                                    <x-heroicon-s-user-circle class="w-8 h-8 text-white"/>
+                                @endif
+                                <div class="ml-2">{{ Auth::user()->name }}</div>
 
                                 <div class="ms-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"

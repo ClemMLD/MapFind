@@ -26,6 +26,7 @@ return [
     'incoming_block' => 'Cet utilisateur vous a bloqué',
     'outgoing_block' => 'Vous avez bloqué cet utilisateur',
     'send_message' => 'Envoyer un message',
+    'type_your_message' => 'Tapez votre message ici',
     'block' => 'Bloquer',
     'unblock' => 'Débloquer',
     'search_here' => 'Chercher ici',

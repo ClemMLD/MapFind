@@ -13,7 +13,7 @@ class UserController extends Controller
     public function show(User $user): RedirectResponse|View
     {
         if ($user->id === auth()->user()->id) {
-            return redirect()->route('account.show');
+            return redirect()->route('account.index');
         } else if (BlockedUser::where('user_id', $user->id)->where('blocked_user_id', auth()->user()->id)->first()) {
             return view('users.show', ['user' => $user, 'incomingBlocked' => true]);
         } else if (BlockedUser::where('user_id', auth()->user()->id)->where('blocked_user_id', $user->id)->first()) {

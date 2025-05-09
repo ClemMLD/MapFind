@@ -26,6 +26,7 @@ return [
     'incoming_block' => 'This user blocked you',
     'outgoing_block' => 'You blocked this user',
     'send_message' => 'Send a message',
+    'type_your_message' => 'Type your message here',
     'block' => 'Block',
     'unblock' => 'Unblock',
     'search_here' => 'Search here',
