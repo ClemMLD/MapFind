@@ -8,8 +8,8 @@ services:
         ports:
             - "8080:8080"
         volumes:
-            - .:/var/www
-            - vendor:/var/www/vendor
+            - .:/var/www/html
+            - vendor:/var/www/html/vendor
         environment:
             - DB_HOST=mysql
             - DB_DATABASE=${DB_DATABASE}
