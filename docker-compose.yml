@@ -40,20 +40,13 @@ services:
         image: node:20
         working_dir: /var/www/html
         volumes:
-            - .:/var/www/html
+            - .:/var/www/html:cached
             - vendor:/var/www/html/vendor
-        command: sh -c "npm install && npm run dev -- --host"
+        command: sh -c "npm run dev"
         ports:
             - "${VITE_PORT:-5173}:5173"
-        environment:
-            - CHOKIDAR_USEPOLLING=true
         depends_on:
             - app
-        networks:
-            - sail
 volumes:
     dbdata:
     vendor:
-networks:
-    sail:
-        driver: bridge
