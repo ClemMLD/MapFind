@@ -1,20 +1,39 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\ActiveMiddleware;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\BlockedUserController;
+use App\Http\Controllers\SubscriptionWebhookController;
 
-Route::get('/', function () {
-    return view('welcome');
+require __DIR__ . '/auth.php';
+
+Route::get('/', [WelcomeController::class, 'show'])->name('welcome');
+Route::prefix('subscription-webhooks')->group(function () {
+    Route::post('/stripe', [SubscriptionWebhookController::class, 'stripe']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth', ActiveMiddleware::class])->group(function () {
+    Route::resource('listings', ListingController::class);
+    Route::prefix('listings')->group(function () {
+        Route::post('/boost', [ListingController::class, 'boost'])->name('listings.boost');
+    });
+    Route::resource('messages', MessageController::class);
+    Route::resource('categories', CategoryController::class)->only(['index']);
+    Route::resource('users', UserController::class)->only(['show']);
+    Route::resource('blocked-users', BlockedUserController::class);
+    Route::prefix('account')->group(function () {
+        Route::match(['POST', 'DELETE'], '/avatar', [AccountController::class, 'avatar'])->name('account.avatar');
+        Route::get('/listings', [AccountController::class, 'listings'])->name('account.listings');
+        Route::get('/upgrade', [AccountController::class, 'upgrade'])->name('account.upgrade');
+        Route::get('/subscription-page', [AccountController::class, 'subscriptionPage'])->name('account.subscription-page');
+    });
+    Route::resource('favorites', FavoriteController::class);
+    Route::resource('account', AccountController::class);
 });
-
-require __DIR__.'/auth.php';
