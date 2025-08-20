@@ -17,6 +17,7 @@ services:
             - DB_PASSWORD=${DB_PASSWORD}
         depends_on:
             - mysql
+        command: sh -c "php artisan reverb:start --port=8081"
 
     mysql:
         image: mysql:8.0
