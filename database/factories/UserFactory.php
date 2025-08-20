@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'boosts' => fake()->numberBetween(1, 100),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'is_active' => true,
         ];
     }
 

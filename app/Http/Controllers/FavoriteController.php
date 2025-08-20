@@ -20,7 +20,7 @@ class FavoriteController extends Controller
         $listingId = $request->input('listing_id');
 
         if (auth()->user()->favorites()->where('listing_id', $listingId)->exists()) {
-            return response()->json(409);
+            return response()->json('', 409);
         }
 
         auth()->user()->favorites()->create([
