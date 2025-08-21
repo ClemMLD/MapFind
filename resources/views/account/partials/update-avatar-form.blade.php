@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-white">
-            {{ __('Avatar') }}
+            {{ __('messages.avatar') }}
         </h2>
 
         <p class="mt-1 text-sm text-white">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("messages.avatar_description") }}
         </p>
     </header>
 
