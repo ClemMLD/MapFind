@@ -1,11 +1,11 @@
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-white">
-            {{ __('Delete Account') }}
+            {{ __('messages.delete_account') }}
         </h2>
 
         <p class="mt-1 text-sm text-white">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+            {{ __('messages.delete_account_description') }}
         </p>
     </header>
 
@@ -13,7 +13,7 @@
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
         :danger="true"
-    >{{ __('Delete Account') }}</x-button>
+    >{{ __('messages.delete_account') }}</x-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('account.destroy', auth()->user()) }}" class="p-6">
@@ -21,22 +21,22 @@
             @method('delete')
 
             <h2 class="text-lg font-medium text-white">
-                {{ __('Are you sure you want to delete your account?') }}
+                {{ __('messages.delete_account_confirmation') }}
             </h2>
 
             <p class="mt-1 text-sm text-white">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                {{ __('messages.delete_account_description') }}
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" :value="__('Password')" />
+                <x-input-label for="password" :value="__('messages.password')" />
 
                 <x-text-input
                     id="password"
                     name="password"
                     type="password"
                     class="mt-1 block w-3/4"
-                    placeholder="{{ __('Password') }}"
+                    placeholder="{{ __('messages.password') }}"
                 />
 
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
@@ -44,11 +44,11 @@
 
             <div class="mt-4 flex flex-row space-x-2">
                 <x-button type="button" x-on:click="$dispatch('close')">
-                    {{ __('Cancel') }}
+                    {{ __('messages.cancel') }}
                 </x-button>
 
                 <x-button danger>
-                    {{ __('Delete Account') }}
+                    {{ __('messages.delete_account') }}
                 </x-button>
             </div>
         </form>
