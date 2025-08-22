@@ -34,7 +34,7 @@ class AccountController extends Controller
 
         $request = request();
         $request->validate([
-            'avatar' => ['required', 'image'],
+            'avatar' => ['required', 'image', 'max:8096'],
         ]);
         $path = $request->file('avatar')->store('', 'public');
         auth()->user()->update(['image' => $path]);
