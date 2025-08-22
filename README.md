@@ -64,3 +64,10 @@ Ouvrez votre navigateur et allez sur [http://localhost:8080](http://localhost:80
 Les identifiants par défaut sont :
 - **Email** : `clement.maldonado@icloud.com`
 - **Mot de passe** : `30072002`
+
+
+### 5. Réinstallation des paquets avce Composer
+Si des changements ont été apportés dans les paquets, utilisez cette commande afin de les réinstaller :
+```bash
+docker compose exec app composer install
+```
