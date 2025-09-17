@@ -76,7 +76,6 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('role')->searchable(),
                 Tables\Columns\TextColumn::make('type')->searchable(),
                 Tables\Columns\TextColumn::make('max_listings'),
-                Tables\Columns\TextColumn::make('password'),
                 Tables\Columns\CheckboxColumn::make('is_active'),
             ]);
     }
