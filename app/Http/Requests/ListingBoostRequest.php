@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\listing;
+use App\Models\Listing;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ListingBoostRequest extends FormRequest
