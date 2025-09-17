@@ -73,8 +73,7 @@ class ListingResource extends Resource
                 Tables\Columns\TextColumn::make('title')->searchable(),
                 Tables\Columns\TextColumn::make('description')->searchable(),
                 Tables\Columns\TextColumn::make('category.name.' . App::getLocale())
-                    ->label('Category')
-                    ->searchable(),
+                    ->label('Category'),
                 Tables\Columns\TextColumn::make('price')->searchable(),
                 Tables\Columns\TextColumn::make('address')->searchable(),
                 Tables\Columns\TextColumn::make('latitude')->searchable(),
